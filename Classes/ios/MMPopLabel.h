@@ -27,7 +27,7 @@
 
 + (MMPopLabel *)popLabelWithText:(NSString *)text;
 - (void)addButton:(UIButton *)button;
-- (void)popAtView:(UIView *)view animateSuperview:(BOOL)animateSuperview;
+- (void)popAtView:(UIView *)view animateSuperview:(BOOL)animateSuperview yOffset:(CGFloat)yOffset;
 - (void)dismiss;
 
 

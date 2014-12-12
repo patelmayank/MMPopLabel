@@ -178,13 +178,13 @@ typedef enum : NSUInteger {
 }
 
 
-- (void)popAtView:(UIView *)view animateSuperview:(BOOL)animateSuperview
+- (void)popAtView:(UIView *)view animateSuperview:(BOOL)animateSuperview yOffset:(CGFloat)yOffset
 {
     if (self.hidden == NO) return;
 
     _arrowType = MMPopLabelTopArrow;
 
-    CGPoint position = CGPointMake(view.center.x, view.center.y + view.frame.size.height / 2 + kMMPopLabelViewPadding);
+    CGPoint position = CGPointMake(view.center.x, view.center.y + view.frame.size.height / 2 + kMMPopLabelViewPadding + yOffset);
     self.center = position;
     if (position.x + (self.frame.size.width / 2) > [UIScreen mainScreen].applicationFrame.size.width) {
         CGFloat diff = (self.frame.size.width + self.frame.origin.x - [UIScreen mainScreen].applicationFrame.size.width) + kMMPopLabelSidePadding;
@@ -197,7 +197,7 @@ typedef enum : NSUInteger {
     if (self.frame.origin.y + self.frame.size.height > [UIScreen mainScreen].applicationFrame.size.height) {
         _arrowType = MMPopLabelBottomArrow;
         position = CGPointMake(position.x,
-                               [UIScreen mainScreen].applicationFrame.size.height - (self.frame.size.height + view.frame.size.height + kMMPopLabelViewPadding));
+                               [UIScreen mainScreen].applicationFrame.size.height - (self.frame.size.height + view.frame.size.height + kMMPopLabelViewPadding + yOffset));
     }
 
     CGPoint centerPoint = CGPointMake(position.x, position.y + self.frame.size.height / 2);
